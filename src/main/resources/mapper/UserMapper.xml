@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.examplsss.demo.dao.UserDao">
+
+    <resultMap id="BaseResultMap" type="com.examplsss.demo.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"></result>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+
+    <select id="Sel" resultType="com.examplsss.demo.entity.User">
+        select * from user where id = #{id} limit 1
+    </select>
+    <select id="list" resultType="com.examplsss.demo.entity.User">
+
+        select  * from  user
+    </select>
+    <select id="listById" resultType="com.examplsss.demo.entity.User">
+
+       select * from user where id = #{id}
+
+    </select>
+
+
+</mapper>
