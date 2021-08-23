@@ -33,6 +33,7 @@ public class OperationInterceptor {
             log.info("name->{} id->{}",1,2);
             if (method.getName().equals(methodName) && method.isAnnotationPresent(Operate.class)) {
                 operate = method.getAnnotation(Operate.class);
+
             }
         }
         //获取方法参数值数组
