@@ -40,7 +40,7 @@ public class OperationInterceptor {
         Object object = joinPoint.proceed(args);
         log.info("args->{}",args);
 
-        System.out.println("保存操作记录:" + operate.type() + "--" + operate.desc());
+        System.out.println("保存操作111记录:" + operate.type() + "--" + operate.desc());
         return object;
     }
 
