@@ -26,7 +26,8 @@ public class OperationInterceptor {
         String targetName = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
         Class targetClass = Class.forName(targetName);
-        Method[] methods = targetClass.getMethods();
+        Method[] methods = targetClass.
+                getMethods();
         for (Method method : methods) {
             log.info("name->{}", method.getName());
             log.info("name->{} id->{}",1,2);
