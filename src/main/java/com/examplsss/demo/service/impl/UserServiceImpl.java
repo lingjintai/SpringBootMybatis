@@ -3,6 +3,8 @@ package com.examplsss.demo.service.impl;
 import com.examplsss.demo.dao.UserDao;
 import com.examplsss.demo.entity.User;
 import com.examplsss.demo.service.UserService;
+import com.examplsss.demo.task.MyTask;
+import com.examplsss.demo.task.threadPool.MyTaskThreadPool;
 import com.examplsss.demo.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +42,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listById(String id) {
-        return userDao.listById(id);
+        MyTask myTask =new MyTask();
+        MyTaskThreadPool.LZ_PUSH_POOL.execute(myTask);
+        return null;
     }
 }

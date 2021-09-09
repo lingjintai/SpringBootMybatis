@@ -1,6 +1,5 @@
 package com.examplsss.demo.entity;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor
 @Data
-@Builder
 public class User {
 
     ///11
