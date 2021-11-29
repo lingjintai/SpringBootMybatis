@@ -1,6 +1,7 @@
 package com.examplsss.demo.advice;
 
 import com.examplsss.demo.dao.UserDao;
+import com.examplsss.demo.entity.User;
 import com.examplsss.demo.service.UserService;
 
 import java.lang.reflect.InvocationHandler;
@@ -37,10 +38,14 @@ public class Handler implements InvocationHandler {
         //加入增强方法
         userAdvice.beforeMethod(method);
         //业务方法
-        System.out.println("方法名称:"+method.getName());
+        System.out.println("方法名称:" + method.getName());
         Object invoke = method.invoke(target, args);
         //System.out.println(method);
         //加入增强方法
+        System.out.println("args==>" + args);
+        User arg = (User) args[1];
+        System.out.println(arg);
+
         userAdvice.afterMethod(method);
         return invoke;
     }

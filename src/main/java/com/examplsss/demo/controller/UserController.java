@@ -2,21 +2,18 @@ package com.examplsss.demo.controller;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSONObject;
-import com.examplsss.demo.advice.Handler;
-import com.examplsss.demo.advice.MyLogger;
 import com.examplsss.demo.annotation.Operate;
 import com.examplsss.demo.entity.DTO.TestExcelDTO;
 import com.examplsss.demo.entity.User;
 import com.examplsss.demo.listener.CustomerDailyImportListener;
+import com.examplsss.demo.proxy.UserProxy;
 import com.examplsss.demo.service.UserService;
-import com.examplsss.demo.service.impl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.lang.reflect.Proxy;
 import java.util.List;
 
 /**
@@ -31,18 +28,18 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserProxy userProxy;
 
 
     @GetMapping("/getUser/{id}")
-    public JSONObject GetUser(@PathVariable int id) {
+    public JSONObject GetUser(@PathVariable int id,User user) {
         JSONObject jsonObject = new JSONObject();
-        UserService target = new UserServiceImpl();
-        System.out.println(userService == target);
-        System.out.println(userService);
-        Handler handler = new Handler(userService, new MyLogger());
-        UserService proxy = (UserService) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), handler);
-        System.out.println(proxy.getClass());
-        User sel = proxy.Sel(id);
+//        UserService target = new UserServiceImpl();
+//        Handler handler = new Handler(userService, new MyLogger());
+//        UserService proxy = (UserService) Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), handler);
+
+        User sel =userService.Sel(id,user);
         jsonObject.put("sel", sel);
         return jsonObject;
     }
@@ -92,5 +89,13 @@ public class UserController {
         return jsonObject;
     }
 
+
+    @Operate(desc = "操作日志", type = "根据id查询list")
+    @GetMapping("/callback/smartcity")
+    public JSONObject aaaa(User user) {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("aaaa","sdasda");
+        return jsonObject;
+    }
 
 }

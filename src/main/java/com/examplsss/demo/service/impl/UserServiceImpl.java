@@ -23,15 +23,13 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User Sel(int id) {
+    public User Sel(int id, User user1) {
         UserDao bean = BeanUtil.getBean(UserDao.class);
-        System.out.println(bean);
         User user = new User();
         user.setId(1);
         user.setAge(12);
         user.setPassword("1231");
         user.setUsername("张三");
-        System.out.println("1111");
         return userDao.Sel(id);
     }
 

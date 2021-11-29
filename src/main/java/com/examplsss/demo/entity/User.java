@@ -18,6 +18,11 @@ public class User {
     private String password;
     private int age;
 
+    public static void main(String[] args) {
+
+        System.out.println("111".split(",").length);
+    }
+
 
 
 }
