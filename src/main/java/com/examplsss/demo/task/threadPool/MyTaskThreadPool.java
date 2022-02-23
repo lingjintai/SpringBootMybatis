@@ -12,6 +12,7 @@ import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
+import java.lang.annotation.Target;
 import java.util.concurrent.*;
 
 /**
@@ -49,6 +50,7 @@ public class MyTaskThreadPool implements CommandLineRunner {
     @PreDestroy
     public void destroy() {
         if (null != LZ_PUSH_POOL) {
+           // LZ_PUSH_POOL.isTerminated()
             LZ_PUSH_POOL.shutdown();
         }
         log.error("销毁线程池!");
