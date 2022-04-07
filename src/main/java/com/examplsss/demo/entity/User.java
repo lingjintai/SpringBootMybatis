@@ -3,6 +3,11 @@ package com.examplsss.demo.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 /**
  * @description:
  * @author: ljt
@@ -21,7 +26,21 @@ public class User {
     public static void main(String[] args) {
 
         System.out.println("111".split(",").length);
+
+        List<User>  list = new ArrayList<>();
+
+        User user = new User();
+        user.setPassword(null);
+        user.setUsername("111");
+
+        list.add(user);
+
+
+
     }
+
+
+
 
 
 
